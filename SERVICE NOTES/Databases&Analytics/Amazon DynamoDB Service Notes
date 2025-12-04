@@ -1,1 +1,39 @@
+Amazon DynamoDB Service Notes
+DynamoDB is a fully managed, serverless, NoSQL (non-relational) key-value and document database service designed for single-digit millisecond performance at any scale.
+1. Core Concepts & Terminology
+•	NoSQL: Does not use a relational schema (no SQL queries, no joins). Designed for flexibility and massive horizontal scalability.
+•	Tables: Collections of items.
+•	Items: Analogous to a row in a relational database. A collection of attributes.
+•	Attributes: Analogous to a column in a relational database. Can be nested.
+•	Primary Key: Uniquely identifies each item in a table. The only required attribute.
+2. Key Structure and Indexing
+The primary key is essential for efficient data retrieval in DynamoDB.
+•	Partition Key (Hash Key): A simple primary key. Data is distributed across partitions based on this key's hash value. The most critical element for scaling. Good partition key design ensures an even distribution of reads/writes.
+•	Sort Key (Range Key): A composite primary key (Partition Key + Sort Key). Items with the same Partition Key are grouped together and sorted by the Sort Key. This enables efficient range queries (e.g., "all orders for a user between date X and date Y").
+Indexes
+DynamoDB provides two types of indexes to query data using non-key attributes:
+•	GSI (Global Secondary Index): A partition key and sort key that can be different from the table's primary key. Queries against a GSI can span all data partitions. GSIs are eventually consistent by default.
+•	LSI (Local Secondary Index): Shares the same partition key as the table, but has a different sort key. Queries against an LSI are restricted to a single partition key value. LSIs are always strongly consistent.
+3. Operations & Consistency
+DynamoDB is optimized for two main operations:
+•	GetItem: Retrieves a single item using its full primary key.
+•	Query: Retrieves items that share the same partition key, with optional filtering on the sort key.
+•	Scan: Retrieves all items in the table. Avoid using Scan in production as it is inefficient, slow, and expensive.
+Read Consistency Models:
+•	Eventually Consistent Reads (Default): Returns data from a replica immediately. It's faster and cheaper, but the response might not reflect the results of a recently completed write operation.
+•	Strongly Consistent Reads: Returns a response with all the most up-to-date data, even if it requires reading from multiple replicas. Slower and costs twice as much.
+4. Pricing & Provisioned Throughput
+DynamoDB provides two capacity modes to manage how you pay for read and write operations:
+•	Provisioned Mode (Standard):
+o	You specify the number of Reads Per Second (RUs) and Writes Per Second (WCUs) needed.
+o	Best for predictable workloads where traffic is consistent.
+o	RCU/WCU Definition: One RCU = 1 strongly consistent read per second (up to 4KB item size). One WCU = 1 write per second (up to 1KB item size).
+•	On-Demand Mode:
+o	Pay-per-request. No need to provision capacity in advance.
+o	Ideal for unpredictable, spiky, or new workloads where throughput is unknown.
+o	Costs more per request than well-tuned provisioned capacity.
+5. Security & Features
+•	DynamoDB Streams: Provides a time-ordered sequence of item-level modifications in a table. Used to trigger AWS Lambda functions in response to data changes in real time.
+•	TTL (Time To Live): A mechanism to automatically delete items after a specific timestamp is reached, useful for managing ephemeral data like session logs or temporary carts.
+•	Encryption: DynamoDB encrypts all data at rest by default using KMS, requiring no configuration from the user.
 
