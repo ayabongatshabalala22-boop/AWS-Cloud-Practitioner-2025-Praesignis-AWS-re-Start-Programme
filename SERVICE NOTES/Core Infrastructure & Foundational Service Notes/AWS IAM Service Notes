@@ -1,1 +1,36 @@
+AWS IAM (Identity and Access Management) Service Notes
+IAM is a foundational AWS service that securely controls access to AWS services and resources. It answers the question: "Who can do what, and under what conditions?"
+1. Core Concepts & Terminology
+•	Users: Represents a person or application that interacts with AWS.
+•	Groups: A collection of Users. You attach policies to groups, rather than individual users, to simplify management (e.g., Developers, Admins, Auditors).
+•	Policies: JSON documents that define permissions. They are the core of IAM. Policies are attached to users, groups, roles, or resources.
+•	Roles: IAM entities that grant temporary permissions. They are assumed by AWS services (like an EC2 instance needing S3 access) or by users who need cross-account access. Roles do not have credentials associated with them until they are assumed.
+•	Permissions Boundary: An advanced IAM feature used to delegate administration of a subset of users/roles while ensuring those entities cannot exceed a maximum set of permissions.
+2. Policy Structure (JSON)
+IAM policies use a specific JSON structure to define rules.
+Element	Description	Values
+Version	The policy language version.	2012-10-17 (standard current version)
+Statement	The main block containing the rule.	Array of objects
+Effect	Whether the statement allows or denies access.	Allow or Deny
+Action	The specific AWS API calls being permitted/denied.	s3:GetObject, ec2:RunInstances, *
+Resource	The specific AWS resource the action applies to.	arn:aws:s3:::mybucket/*, *
+Condition	(Optional) Constraints on when a policy is in effect (e.g., source IP, time of day).	
+Example Policy Snippet:
+json
+{
+    "Effect": "Allow",
+    "Action": "s3:ListBucket",
+    "Resource": "arn:aws:s3:::my_data_bucket"
+}
+Use code with caution.
+3. Key IAM Best Practices & Security
+1.	Principle of Least Privilege: Grant only the permissions required to perform a task. Start with no permissions and add only what is necessary.
+2.	MFA (Multi-Factor Authentication): Enforce MFA for all users, especially the Root user and any administrative accounts.
+3.	Do Not Use Root User: The AWS account root user is highly privileged. Lock away its credentials and use a regular IAM user for daily tasks.
+4.	Use IAM Roles for Services: Never store AWS credentials (Access Keys) directly on an EC2 instance. Instead, use an IAM Role attached to the EC2 instance profile so the instance can securely make API calls.
+5.	Audit Regularly: Use IAM Access Analyzer and IAM Credentials Report to review access levels and credential usage regularly.
+4. Access Types
+IAM manages two types of access for users:
+•	Programmatic Access: Access via the CLI (Command Line Interface), SDKs (Software Development Kits), or direct API calls. Requires an Access Key ID and a Secret Access Key.
+•	AWS Management Console Access: Access via the web-based UI. Requires a Username and Password (often with MFA).
 
