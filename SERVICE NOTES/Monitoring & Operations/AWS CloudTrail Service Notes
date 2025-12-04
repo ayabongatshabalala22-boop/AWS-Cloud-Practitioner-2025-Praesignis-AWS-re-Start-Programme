@@ -1,1 +1,30 @@
+AWS CloudTrail Service Notes
+AWS CloudTrail is a service that enables governance, compliance, operational auditing, and risk auditing of your AWS account. It provides a history of AWS API calls for your account, including who made the call, when, from which IP address, and which resources were affected.
+1. Core Concepts & Terminology
+•	API Activity Focus: CloudTrail records API calls (actions performed by users, roles, or AWS services). It does not monitor network traffic or data plane operations within a VPC (that's VPC Flow Logs).
+•	Event: A record of an activity or API call in AWS. An event includes details like identity of the caller, time of call, source IP, request parameters, and response elements.
+•	Trails: A configuration that determines where CloudTrail sends event records (usually to an S3 bucket and optionally to CloudWatch Logs).
+•	Event History: A console feature that provides a view of the past 90 days of management events in your AWS account.
+2. Event Types
+CloudTrail captures two main types of events:
+A. Management Events (Default)
+•	Records management operations that are performed on resources in your AWS account.
+•	Examples: Launching an EC2 instance (RunInstances), creating an S3 bucket (CreateBucket), changing IAM permissions (AttachRolePolicy).
+•	Enabled by default in Event History.
+B. Data Events (Optional, Additional Cost)
+•	Records data plane operations and resource activities. These are high-volume activities and are disabled by default.
+•	Examples:
+o	S3 object-level APIs (GetObject, PutObject, DeleteObject).
+o	Lambda function invoke APIs (InvokeFunction).
+o	DynamoDB item-level APIs (PutItem, GetItem, DeleteItem).
+3. Configuration & Delivery
+•	S3 Bucket Delivery: The standard, long-term storage destination for CloudTrail logs. Logs are delivered to the specified S3 bucket within about 15 minutes of the API call being made.
+•	Log File Integrity Validation: A feature that ensures log files have not been tampered with or modified after CloudTrail delivers them to the S3 bucket.
+•	CloudWatch Logs Integration: Events can be sent to CloudWatch Logs for real-time analysis, searching, and triggering alarms based on specific API activities (e.g., alarming when DeleteTable is called on a critical DynamoDB table).
+4. Key Use Cases and Best Practices
+•	Security Analysis & Auditing: Determining who deleted a resource or modified permissions.
+•	Compliance: Meeting regulatory requirements for logging activity (HIPAA, PCI-DSS, GDPR).
+•	Operational Troubleshooting: Pinpointing the exact API call failure that caused an application issue.
+•	Best Practice: Global Trail: Create one multi-region trail that logs all activity globally and delivers all logs to a single, dedicated S3 bucket in a separate, locked-down AWS account for security and centralized auditing.
+•	Insights Events: A feature that automatically detects unusual activity or high-volume error rates in your API usage (additional cost feature).
 
