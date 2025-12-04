@@ -1,1 +1,35 @@
+AWS RDS (Relational Database Service) Service Notes
+Amazon RDS is a managed database service that simplifies the setup, operation, and scaling of relational databases in the cloud. It manages administrative tasks like patching, backups, and scaling.
+1. Core Concepts & Features
+•	Managed Service: AWS handles the underlying OS, database patching, backups, failure detection, and recovery.
+•	Supported Engines: RDS supports six popular database engines:
+o	PostgreSQL
+o	MySQL
+o	MariaDB
+o	Oracle
+o	Microsoft SQL Server
+o	Amazon Aurora (AWS's high-performance, cloud-native relational database)
+•	Automated Backups: RDS performs daily full snapshots and captures transaction logs. This enables Point-In-Time Recovery (PITR), allowing you to restore your DB instance to any second within your specified retention window (up to 35 days).
+•	DB Subnet Group: A collection of subnets (ideally spanning multiple AZs) that you designate for your DB instances within a VPC. RDS uses this to place instances during scaling or failover events.
+2. High Availability (Multi-AZ Deployments)
+Multi-AZ is a crucial feature for production workloads that provides fault tolerance and high availability.
+•	Synchronous Replication: Data is synchronously replicated from a primary database instance to a standby replica in a different Availability Zone (AZ).
+•	Automatic Failover: If the primary instance fails (e.g., due to an AZ outage or network issue), RDS automatically flips the CNAME record of your DB instance to the standby replica, minimizing downtime without manual intervention.
+•	Disaster Recovery: Primarily a disaster recovery/HA solution. The standby replica is typically passive and cannot be used for read queries.
+3. Performance & Scalability (Read Replicas)
+Read Replicas are used to increase read throughput and offload read-heavy traffic from the primary instance.
+•	Asynchronous Replication: Data is asynchronously replicated from the primary to one or more read replicas.
+•	Cross-AZ & Cross-Region: Replicas can be created within the same AZ, cross-AZ, or even in a different AWS Region to serve global users or migrate data.
+•	Read-Only: Replicas are read-only copies of the data.
+•	Scalability: You can scale read replicas independently of the primary instance and even promote a read replica to a standalone primary database if needed.
+4. Security & Access
+•	VPC Placement: RDS instances are typically deployed into private subnets for enhanced security.
+•	Security Groups: Control network access to the database instance, defining which IP addresses or EC2 instances can connect on specific ports (e.g., 3306 for MySQL, 5432 for PostgreSQL).
+•	Encryption at Rest: You can encrypt your RDS instances and snapshots using KMS (Key Management Service). Encryption must be enabled at creation time; you cannot encrypt an existing unencrypted database instance.
+•	Encryption in Transit: Use SSL/TLS connections to encrypt data moving between your application and the database endpoint.
+5. Aurora Specifics
+Aurora is AWS's premium database engine offering up to 5x the performance of MySQL and 3x the performance of PostgreSQL at a similar price point.
+•	Storage Automation: Aurora storage automatically scales from 10GB up to 128TB.
+•	Aurora Serverless: An on-demand, auto-scaling configuration for Aurora that starts up immediately and shuts down when not in use, ideal for infrequent or unpredictable workloads.
+•	High Durability: Aurora uses a unique distributed, fault-tolerant storage system that transparently replicates data across 3 AZs with 6 total copies of your data.
 
