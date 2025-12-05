@@ -9,9 +9,7 @@ AWS re/Start Programme – Cloud Practitioner Journey Welcome to my AWS Cloud Pr
 
 • Notes and resources from AWS re/Start lectures and labs. • Study materials and summaries on cloud computing concepts. • Projects, scripts, and exercises demonstrating AWS usage. • Certificate and badge collection showcasing my achievements. • Reflections and milestone updates as I progress.
 
-👨💻ABOUT-ME 
 
-• Passionate lifelong learner and aspiring Cyber Security Specialist. • Currently enrolled in the Praesignis AWS re/Start Programme. • Obsessed with all things cloud, security, networking, and automation. • Eager to make a positive impact with technology and secure our digital future.
 
 🌟 Goals 
 
