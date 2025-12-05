@@ -17,7 +17,7 @@ AWS Tech Stack Utilized
 The project leveraged several key AWS services, primarily within the free tier or at minimal cost:
 Frontend Hosting: Amazon S3 (static website) & Amazon CloudFront (CDN for speed) ⚡
 Networking: Route 53 (DNS) & AWS Certificate Manager (Free SSL) 🔒
-Backend Logic: API Gateway, AWS Lambda (backend logic), DynamoDB (database) 🧠
+Backend Logic: API Gateway, AWS Lambda (backend logic), DynamoDB (database) 
 Identity/Auth: Amazon Cognito (User registration/login) 🔑
 Mapping: Amazon Location Service (Interactive map) 🗺️
 Key Takeaways You Highlighted
