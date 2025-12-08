@@ -1,4 +1,5 @@
 # Amazon CloudWatch Service Notes
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8f2489a5-a977-4a90-aec4-dba0b175f6c6" />
 
 Amazon CloudWatch is a **monitoring and observability service** built for AWS resources and the applications you run on AWS.  
 It provides data and actionable insights to monitor applications, respond to system‑wide performance changes, and optimize resource utilization.
