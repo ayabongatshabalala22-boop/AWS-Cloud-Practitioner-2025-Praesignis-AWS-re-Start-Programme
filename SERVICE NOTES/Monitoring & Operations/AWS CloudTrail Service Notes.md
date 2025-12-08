@@ -1,4 +1,5 @@
 # AWS CloudTrail Service Notes
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/40704dec-dd53-4731-9092-24703209e6a7" />
 
 AWS CloudTrail is a service that enables **governance, compliance, operational auditing, and risk auditing** of your AWS account.  
 It provides a history of AWS API calls, including **who made the call, when, from which IP address, and which resources were affected**.
