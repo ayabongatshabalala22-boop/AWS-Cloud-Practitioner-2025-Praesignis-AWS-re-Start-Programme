@@ -1,4 +1,5 @@
 # AWS Lambda Service Notes
+<img width="313" height="198" alt="image" src="https://github.com/user-attachments/assets/d392fcc8-cbc8-4a03-b2d9-03fcfcf72e06" />
 
 AWS Lambda is a **serverless compute service** that runs your code in response to events without requiring you to provision or manage servers. It is the core of *serverless architecture* on AWS.
 
