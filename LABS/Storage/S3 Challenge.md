@@ -1,3 +1,165 @@
+📦 AWS S3 Challenge Lab
+
+This lab teaches you how to work with Amazon S3 securely and efficiently.
+You will practice bucket creation, object storage, permissions, versioning, and encryption while facing real-world challenges.
+
+🎯 Lab Objectives
+
+By the end of this lab, you will be able to:
+
+Create and configure S3 buckets
+
+Upload, download, and manage objects
+
+Set bucket policies and IAM permissions
+
+Enable versioning and server-side encryption
+
+Enable logging and monitoring
+
+Implement S3 lifecycle rules
+
+Troubleshoot common S3 issues
+
+🛠️ Lab Steps
+1️⃣ Create an S3 Bucket
+
+Open S3 Console → Create bucket
+
+Configure:
+
+Bucket name: my-challenge-bucket-<yourname>
+
+Region: Choose a nearby region
+
+Block all public access: Enabled (for security)
+
+Versioning: Disabled (we will enable later)
+
+Default encryption: None (we will enable later)
+
+Click Create bucket
+
+2️⃣ Upload Objects to the Bucket
+
+Upload 3 sample files: text, image, and JSON
+
+Test downloading the files from the console
+
+Use AWS CLI to upload:
+
+aws s3 cp sample.txt s3://my-challenge-bucket-<yourname>/
+
+3️⃣ Configure Bucket Versioning
+
+Open bucket → Properties → Versioning
+
+Enable Versioning
+
+Upload a file with the same name (sample.txt) twice.
+
+Check the versions tab → two versions appear
+
+Test restoring the previous version.
+
+4️⃣ Enable Server-Side Encryption
+
+Open bucket → Properties → Default encryption
+
+Choose SSE-S3 or SSE-KMS
+
+Upload a new file and verify encryption:
+
+aws s3api head-object --bucket my-challenge-bucket-<yourname> --key newfile.txt
+
+
+Check for "ServerSideEncryption": "AES256" or "aws:kms"
+
+5️⃣ Configure Bucket Policies & Permissions
+
+Go to Permissions → Bucket Policy
+
+Example: allow read-only access for a specific IAM user:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::<account-id>:user/TestUser"},
+      "Action": ["s3:GetObject"],
+      "Resource": ["arn:aws:s3:::my-challenge-bucket-<yourname>/*"]
+    }
+  ]
+}
+
+
+Test by logging in as the IAM user.
+
+6️⃣ Enable Logging & Monitoring
+
+Server access logs:
+
+Permissions → Logging → Enable
+
+Create a logging bucket (e.g., my-challenge-logs)
+
+Enable logs to be sent there
+
+CloudWatch Metrics:
+
+Enable Request metrics
+
+Observe number of GET, PUT, DELETE requests
+
+7️⃣ Implement Lifecycle Rules
+
+Open bucket → Management → Lifecycle rules
+
+Create a rule:
+
+Move files older than 30 days to Glacier
+
+Delete files older than 365 days
+
+Test by uploading files and observing simulated transitions.
+
+8️⃣ Test S3 Security
+
+Try public access by entering file URL in browser → ❌ should fail
+
+Try IAM user without permission → ❌ access denied
+
+Try encrypted file download → ✅ works with permission
+
+🎓 Takeaways
+
+Learned how to manage S3 buckets and objects
+
+Enabled versioning to protect against accidental deletion
+
+Configured encryption at rest
+
+Applied bucket policies to enforce least privilege
+
+Used logging, monitoring, and lifecycle rules for compliance
+
+Observed effects of security misconfigurations
+
+⚠️ Challenges Encountered
+Challenge	Description
+Upload blocked	Bucket policy denied upload
+Public file access	Public access block not enabled
+Encryption misconfigured	SSE-KMS key missing permissions
+Old files not archived	Lifecycle rules not configured correctly
+IAM user access denied	User not in policy or lacked S3 actions
+🧩 Solutions
+
+✔ Check bucket policy and IAM permissions
+✔ Enable Block Public Access to prevent accidental exposure
+✔ Verify KMS key permissions for encryption
+✔ Test lifecycle rules with temporary files before production
+✔ Use CloudTrail / CloudWatch to audit access
 <img width="1354" height="547" alt="iyo eza kqala" src="https://github.com/user-attachments/assets/54bf0b6f-68c1-4aa0-bd7b-3641b5f398b5" />
 <img width="1348" height="547" alt="Screenshot 2025-11-27 151024 khona eza kuqala" src="https://github.com/user-attachments/assets/13e070f0-ce76-47e2-ba43-38752f8ee63a" />
 <img width="1354" height="546" alt="website easy made" src="https://github.com/user-attachments/assets/422202b3-b290-4e58-820d-64a9cb814464" />
