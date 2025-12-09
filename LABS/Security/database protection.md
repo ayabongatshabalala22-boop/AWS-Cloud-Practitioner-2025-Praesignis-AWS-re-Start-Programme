@@ -1,3 +1,255 @@
+🛡️ AWS Database Protection Lab
+
+A hands-on lab to practice securing databases in AWS.
+
+This lab teaches you how to secure Amazon RDS by applying IAM, security groups, encryption, and backups. You will work with real AWS security features to protect your data.
+
+🎯 Lab Objectives
+
+By the end of this lab, you will:
+
+Understand how database security works in AWS
+
+Configure Security Groups to restrict access
+
+Create an IAM policy & role for database access
+
+Enable Encryption at Rest (KMS)
+
+Configure Automatic Backups & Snapshots
+
+Enable Multi-AZ for high availability
+
+Test secure and insecure access
+
+🏗️ Lab Architecture Overview
+
+You will build:
+
+Your Laptop → Bastion Host (EC2) → RDS Database  
+               ↑
+         Secure SG Rules
+
+
+Security features:
+
+IAM Role for DB access
+
+Security Groups
+
+KMS Encryption
+
+Backups & Snapshots
+
+Multi-AZ protection
+
+🛠️ Lab Steps
+1️⃣ Create a VPC (Optional if you already have one)
+
+Create a new VPC (10.0.0.0/16)
+
+Create 2 subnets:
+
+Public subnet (10.0.1.0/24)
+
+Private subnet (10.0.2.0/24)
+
+Attach an Internet Gateway
+
+Create Route Table:
+
+Public subnets → Internet
+
+Private subnets → Local only
+
+2️⃣ Launch an RDS Database (MySQL / PostgreSQL)
+
+Go to RDS Console → Create database
+
+Choose Standard Create
+
+Engine: MySQL or PostgreSQL
+
+Templates: Free-tier
+
+Select:
+
+DB instance identifier: protected-db
+
+Username: admin
+
+Password: (your password)
+
+Connectivity
+
+VPC: your VPC
+
+Subnets: private subnets
+
+Public Access: NO ❌
+
+Security Group
+
+Create a new SG named: rds-private-sg
+
+No inbound rules yet
+
+Storage
+
+Enable Storage Auto Scaling
+
+Encryption
+
+Enable KMS Encryption
+
+Key: aws/rds or your custom KMS key
+
+Availability
+
+Enable Multi-AZ deployment
+
+Click Create Database.
+
+3️⃣ Create a Security Group for Access
+EC2 Security Group (Bastion Host)
+
+Go to EC2 → Security Groups
+
+Create SG: bastion-sg
+
+Inbound:
+
+SSH (22) → your IP only
+
+Outbound:
+
+Allow all (default)
+
+RDS Security Group Rules
+
+Edit rds-private-sg:
+
+Allow MySQL/Aurora (3306)
+
+Source: bastion-sg
+
+This means:
+
+✔ Only the bastion host can talk to RDS
+✔ No one else from the internet can connect
+
+4️⃣ Create a Bastion Host (EC2)
+
+Launch EC2 → Amazon Linux 2
+
+Subnet: Public
+
+SG: bastion-sg
+
+Key pair for SSH
+
+Connect from your terminal:
+
+ssh -i mykey.pem ec2-user@<EC2-Public-IP>
+
+5️⃣ Connect to RDS Securely
+
+Install DB client:
+
+For MySQL
+sudo yum install mariadb -y
+
+
+Connect:
+
+mysql -h <rds-endpoint> -u admin -p
+
+
+If connection works → Your security setup is correct.
+
+If connection fails → Security Group or subnet issue.
+
+6️⃣ Test Protection Features
+🔐 Encryption Test
+
+Run this in the RDS console:
+
+Create a manual snapshot
+
+Download snapshot metadata
+
+Verify "Encrypted: Yes"
+
+🔁 Backup & Restore Test
+
+Modify DB → Set backup retention: 7 days
+
+Create a manual snapshot
+
+Restore snapshot into new DB instance
+
+🌐 Firewall Test
+
+Try to connect to RDS from your local machine:
+
+mysql -h <rds-endpoint> -u admin -p
+
+
+Expected result:
+❌ Connection timed out (Correct! It's private)
+
+🧪 IAM Authentication Test (Optional)
+
+Enable IAM authentication on RDS
+
+Create IAM Policy:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "rds-db:*",
+      "Resource": "*"
+    }
+  ]
+}
+
+
+Attach role to EC2
+
+Connect using IAM token instead of password
+
+🎓 Takeaways
+
+Databases must run in a private subnet, not public
+
+Network access is controlled by Security Groups
+
+KMS encryption protects data at rest
+
+Backups & Snapshots protect against corruption
+
+Multi-AZ ensures high availability
+
+IAM can remove the need for database passwords
+
+Bastion hosts provide secure, isolated access to private systems
+
+🧩 Challenges Faced
+Challenge	Explanation
+RDS not accessible	Security Groups or subnet blocking
+IAM authentication confusion	Requires token-based login
+Misconfigured subnets	DB placed in public subnet by accident
+KMS errors	Using wrong key or missing permissions
+EC2 can't reach RDS	Wrong SG inbound source
+🛠️ Solutions
+
+✔ Double-check routing tables & subnet types
+✔ Only allow access from the bastion SG
+✔ Give EC2 role permission to use KMS key
+✔ Ensure DB runs in private subnet
+✔ Use AWS docs for IAM-token DB login
 <img width="902" height="528" alt="image" src="https://github.com/user-attachments/assets/004676f8-b6b5-4556-89bf-9196f2219cdd" />
 <img width="940" height="485" alt="image" src="https://github.com/user-attachments/assets/d4eb124e-2fb3-4930-91e4-2232016a2308" />
 <img width="940" height="487" alt="image" src="https://github.com/user-attachments/assets/e73c95fc-1fa7-400d-a42d-47cd349052e4" />
