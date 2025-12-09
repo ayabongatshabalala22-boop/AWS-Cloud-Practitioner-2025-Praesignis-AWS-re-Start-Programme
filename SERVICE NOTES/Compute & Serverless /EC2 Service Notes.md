@@ -1,4 +1,5 @@
 # Amazon EC2 (Elastic Compute Cloud) Service Notes
+<img width="262" height="198" alt="image" src="https://github.com/user-attachments/assets/51930b87-fb81-4201-820e-be078b52ace8" />
 
 EC2 provides resizable compute capacity in the cloud, acting as the fundamental **virtual server** building block of AWS.
 
