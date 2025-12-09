@@ -1,4 +1,5 @@
 # Amazon DynamoDB Service Notes
+<img width="337" height="150" alt="image" src="https://github.com/user-attachments/assets/2e875bf2-e547-48e9-ad24-5a9327c631cb" />
 
 Amazon DynamoDB is a **fully managed, serverless, NoSQL key‑value and document database service** designed for single‑digit millisecond performance at any scale.
 
