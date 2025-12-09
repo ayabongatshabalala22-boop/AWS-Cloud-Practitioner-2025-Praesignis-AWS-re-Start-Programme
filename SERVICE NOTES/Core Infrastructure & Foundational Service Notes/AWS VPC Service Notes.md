@@ -1,5 +1,6 @@
 # AWS VPC (Virtual Private Cloud) Service Notes
-<img width="178" height="198" alt="image" src="https://github.com/user-attachments/assets/9d731388-b8d0-4eb8-b5b5-30e475296c23" />
+<img width="320" height="171" alt="image" src="https://github.com/user-attachments/assets/df09f1c4-33ae-4bec-8c70-eb5e8c1bd53e" />
+
 
 AWS VPC provides a **private, isolated section** of the AWS Cloud where you can launch AWS resources in a virtual network that you define.  
 It is the fundamental networking service in AWS.
