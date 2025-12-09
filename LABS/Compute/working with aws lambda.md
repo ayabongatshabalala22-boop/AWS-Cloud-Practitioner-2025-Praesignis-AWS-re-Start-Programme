@@ -20,7 +20,9 @@ This lab guides you through building, testing, and exposing an AWS Lambda functi
 <img width="940" height="452" alt="image" src="https://github.com/user-attachments/assets/d723119c-82e0-42f6-a4ab-e71ec3eecd76" />
 <img width="940" height="486" alt="image" src="https://github.com/user-attachments/assets/b46ca015-75e2-4d16-85d8-70d4950ec8b0" />
 
-##Conclusion
-You built a production-style workflow for AWS Lambda: authoring a Python function, assigning least-privilege IAM, configuring environment variables, testing invocations, wiring API Gateway, and managing versions with aliases. These steps mirror real-world serverless practices—log-driven debugging, immutable versions, and controlled releases via aliases. Extend this lab by adding input validation, structured logs, CI/CD (SAM or Terraform), and unit tests. You now have a solid foundation to deploy scalable, cost-efficient serverless APIs.
+## 🧠 Conclusion
+successfully built a production-style workflow for **AWS Lambda**: authoring a Python function, assigning least-privilege IAM, configuring environment variables, testing invocations, wiring API Gateway, and managing versions with aliases.  
+
+
 
  
