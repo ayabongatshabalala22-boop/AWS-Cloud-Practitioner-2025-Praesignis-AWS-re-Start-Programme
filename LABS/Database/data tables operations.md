@@ -1,3 +1,18 @@
+# ☁️ AWS DynamoDB Lab: Table Operations
+
+## 📖 Overview
+This lab demonstrates a step by step walk in on  how to create, query, update, and delete items in an **Amazon DynamoDB table** using the AWS CLI. It’s designed for cloud practitioners who want hands‑on experience with AWS database services.
+
+---
+
+## 🎯 Learning Objectives
+- Create a DynamoDB table with a primary key.
+- Insert items into the table.
+- Query and scan data.
+- Update and delete items.
+- Clean up resources to avoid charges.
+
+
 <img width="975" height="430" alt="image" src="https://github.com/user-attachments/assets/b6c943c8-dc69-48ca-be74-335c2e2dc7e7" />
 <img width="975" height="380" alt="image" src="https://github.com/user-attachments/assets/972068d5-acf4-463b-80e2-68d45c177bcb" />
 <img width="950" height="425" alt="image" src="https://github.com/user-attachments/assets/d0844023-bdf5-4a2b-a67c-6f46e74b0702" />
