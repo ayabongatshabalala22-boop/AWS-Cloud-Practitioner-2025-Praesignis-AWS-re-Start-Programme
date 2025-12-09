@@ -1,4 +1,5 @@
 # AWS RDS (Relational Database Service) Service Notes
+![Uploading image.png…]()
 
 Amazon RDS is a **managed database service** that simplifies the setup, operation, and scaling of relational databases in the cloud.  
 It manages administrative tasks like patching, backups, and scaling.
