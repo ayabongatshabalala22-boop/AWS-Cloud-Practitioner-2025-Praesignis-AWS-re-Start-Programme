@@ -1,4 +1,5 @@
 # AWS IAM (Identity and Access Management) Service Notes
+<img width="368" height="155" alt="image" src="https://github.com/user-attachments/assets/1bf51f9c-7d08-404e-8524-e238bc18baf2" />
 
 IAM is a foundational AWS service that securely controls access to AWS services and resources.  
 It answers the question: **"Who can do what, and under what conditions?"**
