@@ -1,162 +1,39 @@
-💽 AWS Lab: Working with Amazon EBS
+#  AWS Lab: Working with Amazon EBS
 
-This lab teaches you how to create, attach, and manage Amazon Elastic Block Store (EBS) volumes.
+This lab teaches you how to create, attach, and manage **Amazon Elastic Block Store (EBS)** volumes.  
 You will practice creating volumes, attaching them to EC2 instances, resizing, and snapshotting.
 
-🎯 Lab Objectives
+---
+
+##  Lab Objectives
 
 By the end of this lab, you will be able to:
 
-Create EBS volumes in AWS
+- Create EBS volumes in AWS  
+- Attach volumes to EC2 instances  
+- Format and mount volumes on Linux  
+- Resize and extend volumes  
+- Create and restore snapshots  
+- Delete volumes safely  
+- Understand EBS volume types and use cases  
+
+---
+
+
+## 🛠️ Lab Steps – Amazon EBS
+
+| Step | Action                          | Details                                                                 | Commands / Notes                                                                 |
+|------|---------------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| 1  | Launch an EC2 Instance          | EC2 Console → Launch Instance<br>Choose Amazon Linux 2 (or Ubuntu)<br>Select VPC & subnet<br>Security Group: allow SSH from your IP | Note the **Instance ID** after launch |
+| 2  | Create an EBS Volume            | EC2 → Elastic Block Store → Volumes → Create Volume<br>Type: **gp3**<br>Size: **10 GB**<br>AZ: same as EC2<br>Encryption: optional | Click **Create Volume** |
+| 3  | Attach EBS Volume to EC2        | Select volume → Actions → Attach Volume<br>Choose EC2 instance<br>Device: `/dev/sdf` (Linux) | Volume now attached to instance |
+| 4  | Format & Mount Volume (Linux)   | SSH into EC2 instance<br>List disks: `lsblk`<br>Format: `sudo mkfs -t xfs /dev/xvdf`<br>Create mount point: `sudo mkdir /mnt/ebs`<br>Mount: `sudo mount /dev/xvdf /mnt/ebs` | Verify: `df -h` |
+|5  | Make Mount Persistent (Optional)| Edit `/etc/fstab` → add:<br>`/dev/xvdf   /mnt/ebs   xfs   defaults,nofail   0   2` | Test: `sudo umount /mnt/ebs && sudo mount -a && df -h` |
+| 6  | Create a Snapshot               | EC2 → Volumes → Select volume → Create Snapshot<br>Name: `ebs-lab-snapshot` | Snapshots can be restored into new volumes in same/different AZ |
+| 7  | Resize EBS Volume               | EC2 → Volumes → Modify Volume<br>Increase size (e.g., 10 GB → 20 GB)<br>SSH into EC2 | For **XFS**: `sudo xfs_growfs /mnt/ebs`<br>For **ext4**: `sudo resize2fs /dev/xvdf`<br>Verify: `df -h` |
+| 8  | Delete Volume (Cleanup)         | Select volume → Actions → Delete Volume | Removes unused
 
-Attach volumes to EC2 instances
 
-Format and mount volumes on Linux
-
-Resize and extend volumes
-
-Create and restore snapshots
-
-Delete volumes safely
-
-Understand EBS volume types and use cases
-
-🛠️ Lab Steps
-1️⃣ Launch an EC2 Instance
-
-Open EC2 Console → Launch Instance
-
-Choose Amazon Linux 2 (or Ubuntu)
-
-Network: choose a VPC and subnet
-
-Security Group: allow SSH from your IP
-
-Launch instance and note its Instance ID
-
-2️⃣ Create an EBS Volume
-
-Go to EC2 → Elastic Block Store → Volumes → Create Volume
-
-Configure:
-
-Volume Type: General Purpose SSD (gp3)
-
-Size: 10 GB
-
-Availability Zone: same as your EC2 instance
-
-Encrypted: Enabled (optional but recommended)
-
-Click Create Volume
-
-3️⃣ Attach EBS Volume to EC2
-
-Select the new volume → Actions → Attach Volume
-
-Select your EC2 instance → Device: /dev/sdf (Linux)
-
-4️⃣ Format and Mount Volume (Linux)
-
-SSH into your EC2 instance:
-
-# List disks
-lsblk
-
-# Format the volume
-sudo mkfs -t xfs /dev/xvdf
-
-# Create mount point
-sudo mkdir /mnt/ebs
-
-# Mount the volume
-sudo mount /dev/xvdf /mnt/ebs
-
-# Verify mount
-df -h
-
-5️⃣ Make Mount Persistent (Optional)
-
-Edit /etc/fstab:
-
-sudo nano /etc/fstab
-
-
-Add:
-
-/dev/xvdf   /mnt/ebs   xfs   defaults,nofail   0   2
-
-
-Test:
-
-sudo umount /mnt/ebs
-sudo mount -a
-df -h
-
-6️⃣ Create a Snapshot
-
-Go to EC2 → Volumes → Select your volume → Create Snapshot
-
-Name: ebs-lab-snapshot
-
-Click Create Snapshot
-
-Snapshots can be restored into new volumes in same or different AZ
-
-7️⃣ Resize EBS Volume
-
-Select the volume → Actions → Modify Volume
-
-Increase size (e.g., 10 GB → 20 GB)
-
-SSH into EC2 and expand filesystem:
-
-# For XFS
-sudo xfs_growfs /mnt/ebs
-
-# For ext4
-sudo resize2fs /dev/xvdf
-
-
-Verify new space:
-
-df -h
-
-8️⃣ Delete Volume (Cleanup)
-
-Unmount volume:
-
-sudo umount /mnt/ebs
-
-
-Go to EC2 → Volumes → Actions → Delete Volume
-
-Confirm deletion
-
-🎓 Takeaways
-
-EBS volumes provide persistent block storage for EC2
-
-You can create, attach, format, mount, and resize volumes easily
-
-Snapshots allow backup and restore of data
-
-Encrypted volumes secure data at rest
-
-Mounting and fstab configuration ensures persistence
-
-⚠️ Challenges Encountered
-Challenge	Description
-Volume not in same AZ	Cannot attach EBS volume across AZs
-Device name mismatch	Linux /dev/sdf appears as /dev/xvdf
-Filesystem not expanded	After resize, forgot xfs_growfs
-Snapshot restore in different AZ	Need to create new volume in correct AZ
-🧩 Solutions
-
-✔ Always create EBS in same Availability Zone as EC2
-✔ Use lsblk to check device names
-✔ Run xfs_growfs or resize2fs after volume expansion
-✔ Restore snapshots by creating new volumes in target AZ
 <img width="1366" height="290" alt="lab-1 (1)" src="https://github.com/user-attachments/assets/3865b786-27c1-4627-b498-3afe38265251" />
 <img width="1366" height="460" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/ce923de4-1474-4227-a296-ff9d989bec3c" />
 
@@ -184,3 +61,22 @@ Snapshot restore in different AZ	Need to create new volume in correct AZ
 <img width="1109" height="201" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/99ca28a9-3bfc-4bab-acee-bd661d6aec61" />
 <img width="1318" height="509" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/f88a157d-c88b-4131-b0ae-fbaed479e9c2" />
 <img width="1094" height="252" alt="Screenshot (22)" src="https://github.com/user-attachments/assets/9c80d0c2-7bc5-46ea-a40f-656ee5b6a4ee" />
+## ⚠️ Challenges &  Solutions
+
+| # | Challenge                   | Description                                   | Solution                                                   |
+|---|-----------------------------|-----------------------------------------------|------------------------------------------------------------|
+| 1 | Volume not in same AZ       | Cannot attach EBS volume across AZs           | Always create EBS in same Availability Zone as EC2       |
+| 2 | Device name mismatch        | Linux `/dev/sdf` appears as `/dev/xvdf`       |  Use `lsblk` to check device names                        |
+| 3 | Filesystem not expanded     | After resize, forgot to run `xfs_growfs`      |  Run `xfs_growfs` or `resize2fs` after volume expansion   |
+| 4 | Snapshot restore in different AZ | Need to create new volume in correct AZ   |  Restore snapshots by creating new volumes in target AZ   |
+
+## 🎓 Takeaways
+
+| # | Key Learning                                                   | Benefit / Impact                                      |
+|---|---------------------------------------------------------------|-------------------------------------------------------|
+| 1 | EBS volumes provide persistent block storage for EC2           | Ensures data durability beyond instance lifecycle     |
+| 2 | You can create, attach, format, mount, and resize volumes easily | Flexible storage management for applications          |
+| 3 | Snapshots allow backup and restore of data                     | Enables disaster recovery and migration               |
+| 4 | Encrypted volumes secure data at rest                          | Protects sensitive information and meets compliance   |
+| 5 | Mount
+
