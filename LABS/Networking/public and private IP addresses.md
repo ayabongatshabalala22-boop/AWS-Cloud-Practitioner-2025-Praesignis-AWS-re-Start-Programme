@@ -35,7 +35,7 @@ By the end of this lab, you will:
 - Public and private IPs are dynamically assigned by AWS DHCP  HCP
 
 ⚠️ Challenges Encountered
-1️⃣ Instance Had No Internet Access
+1 Instance Had No Internet Access
 
 Occurred when placed in a private subnet
 
@@ -43,13 +43,13 @@ No IGW route
 
 No public IP assigned
 
-2️⃣ Could Not SSH Into Private Instance
+2 Could Not SSH Into Private Instance
 
 No public IP
 
 Only reachable from inside the VPC
 
-3️⃣ Incorrect Route Table Assignments
+3 Incorrect Route Table Assignments
 
 Wrong associations caused connectivity failures
 
