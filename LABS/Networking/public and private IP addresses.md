@@ -25,6 +25,13 @@ By the end of this lab, you will:
 5. Launch PublicInstance (public IP on) and PrivateInstance (public IP off)  
 6. Verify: PublicInstance has internet; PrivateInstance reachable only internally and no internet  
 
+
+
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/cd4de9bb-6b0c-47d2-b48e-3cdb87f8c598" />
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/d9a9fc4c-ce33-4a78-949b-e241f2fe5dd1" />
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/83594e94-dee1-4938-9ada-1e795fa58a80" />
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/e23c870f-de6b-463f-93a0-943864f823c0" />
+<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/d9c7f375-1ad9-4b0d-bede-46ff12f6eeef" />
 ## Takeaways
 
 - Public IPs allow internet communication  
@@ -34,40 +41,27 @@ By the end of this lab, you will:
 - AWS reserves 5 IPs in every subnet  
 - Public and private IPs are dynamically assigned by AWS DHCP  HCP
 
-⚠️ Challenges Encountered
-1 Instance Had No Internet Access
+## Challenges Encountered
 
-Occurred when placed in a private subnet
+1. Instance Had No Internet Access  
+   - Occurred when placed in a private subnet  
+   - No IGW route  
+   - No public IP assigned  
 
-No IGW route
+2. Could Not SSH Into Private Instance  
+   - No public IP  
+   - Only reachable from inside the VPC  
 
-No public IP assigned
+3. Incorrect Route Table Assignments  
+   - Wrong associations caused connectivity failures  
 
-2 Could Not SSH Into Private Instance
+## Solutions
 
-No public IP
+- Added public routes  
+  - Public subnet received IGW route (0.0.0.0/0 → IGW)
 
-Only reachable from inside the VPC
+- Used public instance as a jump host  
+  - Accessed the private EC2 instance internally through the public EC2 instance
 
-3 Incorrect Route Table Assignments
-
-Wrong associations caused connectivity failures
-
-🧩 Solutions
-✔ Added Public Routes
-
-Public subnet received IGW route (0.0.0.0/0 → IGW)
-
-✔ Used Public Instance as a Jump Host
-
-Used public EC2 to access private EC2 internally
-
-✔ Reattached Subnets to Correct Route Tables
-
-Ensured traffic flowed through the intended network paths
-<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/cd4de9bb-6b0c-47d2-b48e-3cdb87f8c598" />
-<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/d9a9fc4c-ce33-4a78-949b-e241f2fe5dd1" />
-<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/83594e94-dee1-4938-9ada-1e795fa58a80" />
-<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/e23c870f-de6b-463f-93a0-943864f823c0" />
-<img width="975" height="548" alt="image" src="https://github.com/user-attachments/assets/d9c7f375-1ad9-4b0d-bede-46ff12f6eeef" />
-
+- Reattached subnets to correct route tables  
+  - Ensured traffic flowed through the intended network paths
