@@ -1,37 +1,11 @@
-# Creating Networking Resources in an Amazon Virtual Private Cloud (VPC)
-## Objectives
+# 🟦 Creating Networking Resources in an Amazon Virtual Private Cloud (VPC)
 
-In this lab, you will:
+## 📘 Overview
+This lab walks through the process of creating essential networking components inside an Amazon Virtual Private Cloud (VPC).  
+You will build a custom VPC, subnets, route tables, and an Internet Gateway, then deploy EC2 instances to understand how public and private IP addressing works in AWS.
 
-- Summarize the customer scenario
-- Create a VPC, Internet Gateway, Route Table, Security Group, Network Access List, and EC2 instance to create a routable network within the VPC
-- Familiarize yourself with the console
-- Develop a solution to the customers issue found within this lab. 
-
-## Scenario
-Your role is a Cloud Support Engineer at Amazon Web Services (AWS). During your shift, a customer from a startup company requests assistance regarding a networking issue within their AWS infrastructure. The email and an attachment of their architecture is below.
-
+This hands‑on exercise strengthens your understanding of
 <img width="732" height="407" alt="lab-2 (1)" src="https://github.com/user-attachments/assets/5bb48b79-05cb-495c-b148-26577200d52d" />
-   
-  *Customer VPC architecture*
-  
-## Task 1: Investigate the customer's needs
-
-- I open the AWS console from Vocareum and then access the VPC service either from Recently visited services or by selecting it under Networking and Content Delivery in the Services menu.
-- Start at the top of the left navigation pane at Your VPCs and work your way down. Select Your VPCs, navigate to the top right corner, and select Create VPC
-- Name the VPC: Test VPC
-- IPv4 CIDR block: 192.168.0.0/18
-- Leave everything else as default, and select Create VPC.
-  
- ## **Creating Subnets**
-- Now that the VPC is complete, look at the left navigation pane and select Subnets. In the top right corner, select Create subnet.
-
-<img width="1862" height="322" alt="lab-2(2)" src="https://github.com/user-attachments/assets/3626e02f-020e-48c6-8d73-32a43c6f607c" />
-
-   *Figure: Select Create subnet*
-
-Configure like the following picture:
-
 <img width="775" height="858" alt="lab-2(3)" src="https://github.com/user-attachments/assets/50e48577-501d-4622-8567-d872997eb518" />
 
  *Figure: Subnet configuration*
