@@ -1,33 +1,70 @@
-# Scenario
+# 🟦 AWS DynamoDB Lab: Organizing Data
 
-The database operations team has created a relational database named `world` containing three tables: `city`, `country`, and `countrylanguage`. You help write a few queries to group records for analysis by using both the `GROUP BY` and `OVER` clauses.
+## 📘 Overview
+This lab focuses on how DynamoDB organizes data using tables, items, attributes, primary keys, and indexes.  
+You will learn how to design a table structure, choose the right key schema, insert and retrieve data efficiently, and understand how DynamoDB partitions and stores information for scalability.
 
----
-
-# Lab Overview and Objectives
-
-This lab demonstrates how to use some common database functions with the `GROUP BY` and `OVER` clauses.
-
-After completing this lab, you should be able to:
-
-- Use the `GROUP BY` clause with the aggregate function `SUM()`
-- Use the `OVER` clause with the `RANK()` window function
-- Use the `OVER` clause with the aggregate function `SUM()` and the `RANK()` window function
-
-When you start the lab, the following resources are already created for you:
+This lab builds essential skills for designing NoSQL data models in AWS.
 
 ---
 
-# Task 1: Connect to the Command Host
+## 🛠️ Lab Objectives
+- Understand how DynamoDB organizes data  
+- Create a table with an effective key schema  
+- Insert and retrieve structured data  
+- Use sort keys to organize related items  
+- Explore how DynamoDB partitions data  
+- Learn when to use secondary indexes  
 
-In this task, you connect to an instance containing a database client, which is used to connect to a database. This instance is referred to as the **Command Host**.
+---
 
-1. In the AWS Management Console, choose the **Services** menu. Under **Compute**, choose **EC2**.
-2. In the navigation pane, choose **Instances**.
+## 🚀 Lab Steps
+
+### 1. Create a DynamoDB Table for Organized Data
+- Open **DynamoDB Console → Tables → Create Table**  
+- Table name: `Orders`  
+- Partition key: `OrderID` (String)  
+- Sort key: `CustomerID` (String)  
+- Capacity mode: On‑demand  
+- Create the table  
+
+### 2. Insert Structured Items
+- Use **Create Item** in the console  
+- Add attributes such as:  
+  - `OrderID: "1001"`  
+  - `CustomerID: "C001"`  
+  - `Product: "Laptop"`  
+  - `Quantity: 1`  
+  - `Status: "Shipped"`  
+
+- Insert multiple items with the same `CustomerID` to demonstrate sorting  
+
+### 3. Query Items by Partition Key
+- Query using `OrderID`  
+- Observe that DynamoDB returns all matching items  
+- Sort key organizes items by `CustomerID`  
+
+### 4. Query Items by Partition + Sort Key
+- Query for a specific customer’s orders  
+- Use conditions like `CustomerID > "C000"`  
+- Observe how sort keys group related data  
+
+### 5. Scan the Table
+- Retrieve all items  
+- Compare performance differences between Scan and Query  
+
+### 6. Add a Global Secondary Index (GSI)
+- Create GSI:  
+  - Partition key: `CustomerID`  
+  - Sort key: `Status`  
+- Use GSI to retrieve all orders for a customer regardless of `OrderID`  
+
+### 7. Explore Data Partitioning
+- Review **Table → Partitions**  
+- Observe how DynamoDB distributes data based on partition key values  
+- Understand how even distribution improves performance  
+
 # Task 1: Connect to the Command Host (Continued)
-
-7. Next to the instance labelled **Command Host**, select the check box ☑ and then choose **Connect**.  
-   **Note:** If you do not see the **Command Host**, the lab is possibly still being provisioned, or you may be using another Region.
 
 8. For **Connect to instance**, choose the **Session Manager** tab.
 
@@ -80,4 +117,58 @@ ORDER BY SUM(Population) DESC;
 <img width="940" height="275" alt="image" src="https://github.com/user-attachments/assets/228da1ed-5288-40fa-932b-9ac24276d868" />
 <img width="940" height="370" alt="image" src="https://github.com/user-attachments/assets/93975d92-5cc3-4a9d-bdfb-cba90fb39025" />
 <img width="940" height="523" alt="image" src="https://github.com/user-attachments/assets/3814effa-a0d7-46a6-87ed-e5f12d08e5f3" />
+## ✅ Takeaways
+- DynamoDB organizes data into **tables → items → attributes**  
+- **Partition keys** determine item distribution across partitions  
+- **Sort keys** group and order related items  
+- **Query** is efficient because it targets specific keys  
+- **Scan** reads the entire table and is less efficient  
+- **Global Secondary Indexes (GSIs)** allow alternative query patterns  
+- Good key design is essential for performance and scalability  
+
+---
+
+## ⚠️ Challenges
+
+### 1. Choosing the Right Key Schema
+- Difficulty deciding between partition‑only vs. partition + sort key  
+- Poor key choice led to uneven data distribution  
+
+### 2. Query Limitations
+- Queries require the partition key  
+- Users attempted to query by attributes not part of the key  
+
+### 3. Understanding Indexes
+- Confusion between GSI and LSI  
+- Uncertainty about when to use each  
+
+### 4. Partitioning Behavior
+- Hard to visualize how DynamoDB distributes data  
+- Uneven partition keys caused hot partitions  
+
+---
+
+## 🧩 Solutions
+
+### Improved Key Schema Design
+- Chose partition keys with high cardinality  
+- Used sort keys to group related items logically  
+
+### Corrected Query Patterns
+- Used Query only with valid key attributes  
+- Used Scan only when necessary  
+
+### Clarified Index Usage
+- GSIs allow querying by non‑key attributes  
+- LSIs require the same partition key but different sort keys  
+
+### Understood Partitioning
+- Reviewed partition metrics in the console  
+- Ensured partition keys were evenly distributed  
+
+---
+
+## 📌 Summary
+This lab demonstrated how DynamoDB organizes data using keys, items, and partitions.  
+You learned how to design tables, insert structured data, query efficiently, and use indexes to support additional access patterns.
 
