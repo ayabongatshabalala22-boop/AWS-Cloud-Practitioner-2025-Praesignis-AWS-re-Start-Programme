@@ -1,51 +1,101 @@
-🟦 AWS Lab: Introduction to Amazon Linux AMI
-This lab introduces Amazon Linux AMI, a secure and high-performance Linux environment designed specifically for Amazon EC2.
+# 🟦 AWS Lab: Introduction to Amazon Linux AMI
 
-The purpose of this lab is to show you a step by step hand om guidance on  how to launch, access, and work with Amazon Linux while building practical AWS and Linux skills.
+## 📘 Overview
+This lab introduces the Amazon Linux AMI, a secure and high‑performance Linux environment designed specifically for Amazon EC2.  
+You will learn how to launch, access, and work with Amazon Linux while building foundational AWS and Linux skills.
 
-You will practice:
-Launching an EC2 instance
-Connecting using EC2 Instance Connect
-Running Linux commands
-Configuring the AWS CLI
-Understanding how Amazon Linux is optimized for AWS environments
+---
 
- Takeaways
- Learned how to launch and manage EC2 instances
- Understood how to securely connect to an Amazon Linux instance
- Practiced Linux navigation and file management
- Learned to configure and use the AWS CLI
-Saw how Amazon Linux offers built-in optimizations for AWS
-Understood the importance of choosing the right AMI
+## 🛠️ Lab Objectives
+- Launch an EC2 instance  
+- Connect using EC2 Instance Connect  
+- Run basic Linux commands  
+- Configure the AWS CLI  
+- Understand how Amazon Linux is optimized for AWS environments  
 
+---
 
-Challenges
-1  Connecting to the EC2 Instance
-Connection failed sometimes due to wrong connection methods or missing permissions.
+## 🚀 Lab Steps
 
-2  AWS CLI Setup
-Errors appeared when credentials or regions weren’t configured correctly.
+### 1. Launch an EC2 Instance
+- Select Amazon Linux AMI  
+- Choose an instance type (t2.micro recommended)  
+- Configure VPC, subnet, and security group  
+- Launch the instance  
 
-3  Learning Linux Commands
-Commands like cd, ls, mkdir, and permissions took practice to remember.
+### 2. Connect Using EC2 Instance Connect
+- Use browser‑based SSH  
+- No private key required  
+- Ensure the instance is in a supported Availability Zone  
 
-4 Understanding AMI Types
-Differentiating between Amazon Linux AMI, Amazon Linux 2, and other AMIs was confusing at first.
+### 3. Run Linux Commands
+- Navigation: `cd`, `ls`, `pwd`  
+- File operations: `mkdir`, `cat`, `nano`, `less`  
+- System info: `top`, `uname`, `df -h`  
 
-🧩 Solutions
-Fixed EC2 Connection Issues
-Used EC2 Instance Connect when no private key was available
-Ensured the instance was running and in the correct Availability Zone
- Solved AWS CLI Configuration Errors
-Ran aws configure and entered correct credentials
-Ensured IAM user had the correct permissions
+### 4. Configure the AWS CLI
+- Run `aws configure`  
+- Enter Access Key, Secret Key, Region, Output Format  
+- Test with `aws s3 ls`  
 
- Improved Linux Skills
-Used cheat sheets and man pages
-Practiced commands repeatedly
- Understood AMI Differences
-Reviewed AWS documentation to learn lifecycle and features
-Compared Amazon Linux vs Amazon Linux 2 performance and compatibility
+### 5. Explore Amazon Linux Features
+- Fast boot times  
+- AWS‑optimized kernel  
+- Preinstalled AWS tools (CLI, CloudInit, SSM Agent)  
+- Differences between Amazon Linux AMI and Amazon Linux 2  
+
+---
+
+## ✅ Takeaways
+- Learned how to launch and manage EC2 instances  
+- Understood how to securely connect to an Amazon Linux instance  
+- Practiced Linux navigation and file management  
+- Learned to configure and use the AWS CLI  
+- Saw how Amazon Linux offers built‑in AWS optimizations  
+- Understood the importance of choosing the right AMI  
+
+---
+
+## ⚠️ Challenges
+
+### 1. Connecting to the EC2 Instance
+- Connection failed due to incorrect methods or missing permissions  
+
+### 2. AWS CLI Setup
+- Errors occurred when credentials or regions were misconfigured  
+
+### 3. Learning Linux Commands
+- Commands like `cd`, `ls`, `mkdir`, and permissions required practice  
+
+### 4. Understanding AMI Types
+- Differentiating between Amazon Linux AMI, Amazon Linux 2, and other AMIs was initially confusing  
+
+---
+
+## 🧩 Solutions
+
+### Fixed EC2 Connection Issues
+- Used EC2 Instance Connect when no private key was available  
+- Ensured the instance was running and in the correct Availability Zone  
+
+### Solved AWS CLI Configuration Errors
+- Ran `aws configure` with correct credentials  
+- Ensured IAM user had required permissions  
+
+### Improved Linux Skills
+- Used cheat sheets and `man` pages  
+- Practiced commands repeatedly  
+
+### Understood AMI Differences
+- Reviewed AWS documentation  
+- Compared Amazon Linux vs Amazon Linux 2 for performance and compatibility  
+
+---
+
+## 📌 Summary
+This lab provided hands‑on experience with Amazon Linux AMI, EC2 connectivity, Linux fundamentals, and AWS CLI configuration.  
+It strengthened your understanding of AWS‑optimized operating systems and how to interact with them effectively.
+
 
 <img width="940" height="592" alt="image" src="https://github.com/user-attachments/assets/a04976d7-e855-4726-ab57-7bb52d0f0094" />
 <img width="940" height="577" alt="image" src="https://github.com/user-attachments/assets/aa6a16cb-cb8d-4f04-95d0-a3ce8c11f664" />
