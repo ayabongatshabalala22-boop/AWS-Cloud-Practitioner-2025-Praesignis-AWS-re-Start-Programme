@@ -1,12 +1,12 @@
-# ⚡ AWS Lambda Lab
+#  AWS Lambda Lab
 
-## 🧪 Introduction
+##  Introduction
 This lab introduces you to **AWS Lambda**, a serverless compute service that lets you run code without provisioning or managing servers.  
 You will learn how Lambda functions work, how they integrate with other AWS services, and how to deploy and test your own function.
 
 ---
 
-## 🎯 Lab Objectives
+## Lab Objectives
 - Understand the purpose and benefits of **serverless computing**  
 - Create and configure an **AWS Lambda function**  
 - Trigger Lambda using different event sources (API Gateway, S3, CloudWatch Events)  
