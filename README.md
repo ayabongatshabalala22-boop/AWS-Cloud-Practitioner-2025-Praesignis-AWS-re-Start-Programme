@@ -42,3 +42,15 @@ This space documents my learning journey through the **Praesignis AWS re/Start P
   - CompTIA Security+  
   - And more as I progress  
 
+## 📊 Data Analyst Aspirations
+
+- Develop strong skills in **data cleaning, transformation, and visualization**  
+- Learn to work with tools such as **Excel, SQL, Python (Pandas/NumPy), and Power BI/Tableau**  
+- Build the ability to **interpret data**, identify trends, and support decision‑making  
+- Gain hands‑on experience with **datasets, dashboards, and reporting workflows**  
+- Strengthen understanding of **data governance, quality, and ethical data handling**  
+- Work towards industry‑recognized certifications such as:  
+  - Microsoft Power BI Data Analyst  
+  - Google Data Analytics  
+  - AWS Data Analytics Specialty  
+
