@@ -1,4 +1,4 @@
-# 🟦 AWS EC2 Lab: Launching and Managing Virtual Servers
+#  AWS EC2 Lab: Launching and Managing Virtual Servers
 
 ## 📘 Overview
 This lab introduces Amazon EC2 (Elastic Compute Cloud), a core AWS service that provides scalable virtual servers in the cloud.  
