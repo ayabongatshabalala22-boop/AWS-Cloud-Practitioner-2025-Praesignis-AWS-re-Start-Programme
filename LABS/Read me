@@ -1,19 +1,17 @@
-#🧪AWS Labs Collection
+# 🧪 AWS Labs Collection
 
 Welcome to my **AWS Labs ReadMe**, a structured collection of all the hands‑on labs I completed during the **Praesignis AWS re/Start Programme (2025)**.  
-Each lab documents what I learned, the steps I followed, challenges I encountered, and the solutions I applied.
- Including snapshots of the labs
+Each lab documents what I learned, the steps I followed, challenges I encountered, and the solutions I applied — including snapshots of the labs.
+
 ---
 
-
-## 📁Labs Structure
+## 📁 Labs Structure
 /EC2-Lab
-/Lambda-Lab 
+/Lambda-Lab
 /S3-Lab 
 /VPC-Lab 
 /IAM-Lab 
 /CloudWatch-Lab
-/CLI-Lab
-/Data-Analysis-Labs
-..etc
-
+/CLI-Lab 
+/Data-Analysis-Labs 
+...etc
