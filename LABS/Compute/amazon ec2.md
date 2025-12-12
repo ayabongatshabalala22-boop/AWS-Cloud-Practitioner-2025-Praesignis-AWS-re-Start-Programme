@@ -18,7 +18,7 @@ This lab builds foundational cloud computing and Linux administration skills.
 
 ---
 
-## 🚀 Lab Steps
+## Lab Steps
 
 ### 1. Choose an Amazon Machine Image (AMI)
 - Open **EC2 Console → Launch Instance**  
@@ -57,7 +57,7 @@ Create a new security group:
 
 ---
 
-## ✅ Takeaways
+##  Takeaways
 
 - Learned how to launch and configure an **EC2 instance**  
 - Understood the role of **AMIs, instance types, and storage**  
@@ -70,7 +70,7 @@ Create a new security group:
 ---
 
 
-## ⚠️ Challenges
+##  Challenges
 - SSH blocked by incorrect security group rules  
 - Wrong AMI username used  
 - EC2 Instance Connect not supported in selected AZ  
