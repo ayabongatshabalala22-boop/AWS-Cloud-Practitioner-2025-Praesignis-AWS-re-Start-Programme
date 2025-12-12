@@ -9,7 +9,7 @@ In this repository, you will find everything I learned and achieved during the A
 
 ### 🚀 AWS re/Start Programme – Cloud Practitioner Journey
 Welcome to my **AWS Cloud Practitioner 2025** repository!  
-This space documents my learning journey through the **Praesignis AWS re/Start Programme**, where I built foundational knowledge and hands‑on skills in cloud computing on **Amazon Web Services (AWS)** as an entry point into the world of **cyber security**.
+This space documents my learning journey through the **Praesignis AWS re/Start Programme**, where I built foundational knowledge and hands‑on skills in cloud computing on **Amazon Web Services (AWS)** as an entry point into the world of **cyber security** and **Data Analyst**to Excelle.
 
 ---
 
