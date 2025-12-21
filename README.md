@@ -7,11 +7,12 @@ In this repository, you will find everything I learned and achieved during the A
 ## 💻 README
 ---
 
-### 🚀 AWS re/Start Programme – Cloud Practitioner Journey
+###  AWS re/Start Programme – Cloud Practitioner Journey
 Welcome to my **AWS Cloud Practitioner 2025** repository!  
 This space documents my learning journey through the **Praesignis AWS re/Start Programme**, where I built foundational knowledge and hands‑on skills in cloud computing on **Amazon Web Services (AWS)** as an entry point into the world of **cyber security** and **Data Analyst**to Excelle.
 
 ---
+
 
 ## 📚 What You'll Find in This Repository
 - Notes and resources from AWS re/Start lectures and labs  
@@ -21,7 +22,7 @@ This space documents my learning journey through the **Praesignis AWS re/Start P
 - Reflections and milestone updates as I progress  
 
 
-## 🌟 Goals
+##  Goals
 
 - Achieve **AWS Certified Cloud Practitioner (CLF‑C02)**  
 - Gain a strong understanding of AWS core services (EC2, S3, IAM, Lambda, VPC, etc.)  
@@ -54,3 +55,5 @@ This space documents my learning journey through the **Praesignis AWS re/Start P
   - Google Data Analytics  
   - AWS Data Analytics Specialty  
 
+---
+<img width="601" height="601" alt="image" src="https://github.com/user-attachments/assets/ad13ffe2-fa9c-4a2e-a005-0b10bc424ca3" />   <img width="601" height="601" alt="image" src="https://github.com/user-attachments/assets/5fc0aed3-c7aa-4169-9419-f012820a28ef" />
